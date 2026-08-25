@@ -8,7 +8,7 @@ USE SCHEMA APP;
 CREATE OR REPLACE NOTIFICATION INTEGRATION aws_malaysia_semiconductor_capacity_EMAIL_INT
   TYPE = EMAIL
   ENABLED = TRUE
-  ALLOWED_RECIPIENTS = ('jonathan.asvestis@snowflake.com');
+  ALLOWED_RECIPIENTS = ('<YOUR_EMAIL>');
 
 -- Alert: CAPACITY_CEILING_ALERT
 CREATE OR REPLACE ALERT APP.CAPACITY_CEILING_ALERT
@@ -22,7 +22,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_malaysia_semiconductor_capacity_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Production Capacity Planning: Fab utilization approaching capacity ceiling',
     'Fab utilization approaching capacity ceiling'
   );
@@ -41,7 +41,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_malaysia_semiconductor_capacity_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Production Capacity Planning: Forecasted demand exceeds available capacity',
     'Forecasted demand exceeds available capacity'
   );
