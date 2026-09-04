@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="malaysia"
+            labels={{ entity: 'Products', event: 'Scheduled Runs', alert: 'Bottlenecks' }}
             regions={data?.regions}
             markers={[{"label": "Penang", "value": "Fab: util 92%", "color": "green", "size": "lg"}, {"label": "Kulim", "value": "Assembly: yield 94%", "color": "green", "size": "lg"}, {"label": "Kuala Lumpur", "value": "HQ & design center", "color": "blue", "size": "md"}, {"label": "Johor Bahru", "value": "Test facility", "color": "green", "size": "md"}]}
             routes={[{"from": "Penang", "to": "Kulim", "color": "#29B5E8"}]}
@@ -83,8 +84,13 @@ export default function HomePage() {
         columns={[
           { key: 'id', header: 'Line' },
           { key: 'name', header: 'Product' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Utilization' },
-          { key: 'value', header: 'Output/Week' },
+          { key: 'm1', header: 'Output/Week' },
+          { key: 'm2', header: 'Cycle Time' },
+          { key: 'm3', header: 'Queue Time' },
+          { key: 'events', header: 'Scheduled Runs' },
+          { key: 'alerts', header: 'Bottlenecks' },
         ]}
         data={data?.entities || []}
         title="Production Line Status"
